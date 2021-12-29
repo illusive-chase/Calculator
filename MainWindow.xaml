@@ -1,0 +1,295 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:WpfMath.Controls;assembly=WpfMath"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        FontFamily="Corbel"
+        Title="Calculator" Height="600" Width="1000" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <Style x:Key="horizontal" TargetType="ScrollViewer">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollViewer">
+                        <ScrollViewer
+                            Content="{TemplateBinding Content}"
+                            VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}" HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" Grid.Row="{TemplateBinding Grid.Row}">
+                            <ScrollViewer.Resources>
+                                <Style TargetType="ScrollBar">
+                                    <Setter Property="IsTabStop" Value="False"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ScrollBar">
+                                                <Border Height="5" Background="#FFFFFF" Margin="15,5,15,5">
+                                                    <Track x:Name="PART_Track">
+                                                        <Track.Thumb>
+                                                            <Thumb>
+                                                                <Thumb.Template>
+                                                                    <ControlTemplate TargetType="Thumb">
+                                                                        <Grid>
+                                                                            <Border Background="#E0E0E0" CornerRadius="3">
+                                                                                <Thumb Visibility="Hidden"/>
+                                                                            </Border>
+                                                                        </Grid>
+                                                                    </ControlTemplate>
+                                                                </Thumb.Template>
+                                                            </Thumb>
+                                                        </Track.Thumb>
+                                                    </Track>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ScrollViewer.Resources>
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" BorderThickness="0,0,0,0" Background="#FFF8F8F8">
+            <StatusBar>
+                <StatusBarItem>
+                    <TextBlock x:Name="tbStatusText" />
+                </StatusBarItem>
+            </StatusBar>
+        </Border>
+        <Border Grid.Row="0" BorderThickness="0,0,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="240"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" BorderThickness="1,0,0,0" Background="Transparent">
+                    <GridSplitter.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Offset="0.0" Color="#FFFFFFFF"/>
+                            <GradientStop Offset="0.3" Color="#E2E2E2"/>
+                            <GradientStop Offset="0.7" Color="#E2E2E2"/>
+                            <GradientStop Offset="1.0" Color="#FFFFFFFF"/>
+                        </LinearGradientBrush>
+                    </GridSplitter.BorderBrush>
+                </GridSplitter>
+
+                <!--左侧区域-->
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <!--变量-->
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Variable" FontSize="15" Margin="20,0,0,0" FontFamily="Corbel"/>
+                        <Border Grid.Row="1" BorderThickness="0,0,0,0">
+                            <local:SmoothScrollViewer x:Name="ssvVariablesViewer">
+                                <local:SmoothScrollViewer.Resources>
+                                    <Style TargetType="ScrollBar">
+                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ScrollBar">
+                                                    <Border Width="5" Background="#FFFFFF" Margin="5,15,5,15">
+                                                        <Track IsDirectionReversed="true">
+                                                            <Track.Thumb>
+                                                                <Thumb>
+                                                                    <Thumb.Template>
+                                                                        <ControlTemplate TargetType="Thumb">
+                                                                            <Grid>
+                                                                                <Border Background="#E0E0E0" CornerRadius="3">
+                                                                                    <Thumb Visibility="Hidden"/>
+                                                                                </Border>
+                                                                            </Grid>
+                                                                        </ControlTemplate>
+                                                                    </Thumb.Template>
+                                                                </Thumb>
+                                                            </Track.Thumb>
+                                                        </Track>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </local:SmoothScrollViewer.Resources>
+                                <StackPanel x:Name="spVariables"/>
+                            </local:SmoothScrollViewer>
+                        </Border>
+                    </Grid>
+                    <GridSplitter Grid.Row="1" ResizeDirection="Rows" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0,1,0,0" Background="Transparent">
+                        <GridSplitter.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Offset="0.0" Color="#FFFFFFFF"/>
+                                <GradientStop Offset="0.5" Color="#E2E2E2"/>
+                                <GradientStop Offset="1.0" Color="#FFFFFFFF"/>
+                            </LinearGradientBrush>
+                        </GridSplitter.BorderBrush>
+                    </GridSplitter>
+                    <!--函数-->
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Function" FontSize="15" Margin="20,0,0,0" FontFamily="Corbel"/>
+                        <Border Grid.Row="1" BorderThickness="0,0,0,0" BorderBrush="#FFC2C2C2">
+                            <local:SmoothScrollViewer x:Name="ssvFunctionsViewer">
+                                <local:SmoothScrollViewer.Resources>
+                                    <Style TargetType="ScrollBar">
+                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ScrollBar">
+                                                    <Border Width="5" Background="#FFFFFF" Margin="5,15,5,15">
+                                                        <Track IsDirectionReversed="true">
+                                                            <Track.Thumb>
+                                                                <Thumb>
+                                                                    <Thumb.Template>
+                                                                        <ControlTemplate TargetType="Thumb">
+                                                                            <Grid>
+                                                                                <Border Background="#E0E0E0" CornerRadius="3">
+                                                                                    <Thumb Visibility="Hidden"/>
+                                                                                </Border>
+                                                                            </Grid>
+                                                                        </ControlTemplate>
+                                                                    </Thumb.Template>
+                                                                </Thumb>
+                                                            </Track.Thumb>
+                                                        </Track>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </local:SmoothScrollViewer.Resources>
+                                <StackPanel x:Name="spFunctions"/>
+                            </local:SmoothScrollViewer>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <!--右侧公式处理部分-->
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--上方按钮区域-->
+                    <Border Grid.Row="0" BorderThickness="0,0,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FFFFFFFF" Offset="0.0"/>
+                                <GradientStop Color="#FFF8F8F8" Offset="0.05"/>
+                                <GradientStop Color="#FFF8F8F8" Offset="0.95"/>
+                                <GradientStop Color="#FFFFFFFF" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                            <Button x:Name="btnCalculate" Margin="5,5,0,5" Width="40" Background="#FFFFFFFF" Click="ButtonCalculate_Click" BorderThickness="0,0,0,0">
+                                <Image Source="./Assets/equal.png"/>
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="btnAddVariable" Margin="5,5,0,5" Width="40" Background="#FFFFFFFF" Click="ButtonAddVariable_Click" BorderThickness="0,0,0,0">
+                                <Image Source="./Assets/addvar.png"/>
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="btnClear" Margin="5,5,0,5" Width="40" Background="#FFFFFFFF" Click="ButtonClear_Click" BorderThickness="0,0,0,0">
+                                <Image Source="./Assets/clear.png"/>
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="btnSave" Margin="5,5,0,5" Width="40" Background="#FFFFFFFF" Click="ButtonSave_Click" BorderThickness="0,0,0,0">
+                                <Image Source="./Assets/save.png"/>
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <!--输入框-->
+                    <TextBox x:Name="txtInputBox" Grid.Row="1" Margin="20,0,0,0" BorderThickness="0,0,0,0" FontFamily="Cambria" FontSize="25" VerticalContentAlignment="Center" TextChanged="InputBox_TextChanged" KeyDown="InputBox_KeyDown"/>
+
+                    <Border Grid.Row="2" BorderThickness="0,1,0,1">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Offset="0.0" Color="#FFFFFFFF"/>
+                                <GradientStop Offset="0.1" Color="#E2E2E2"/>
+                                <GradientStop Offset="0.6" Color="#E2E2E2"/>
+                                <GradientStop Offset="1.0" Color="#FFFFFFFF"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                    </Border>
+                    <!--实时显示公式-->
+                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Style="{StaticResource horizontal}">
+                        <controls:FormulaControl x:Name="fcFormulaControl" Margin="20,0,20,0" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" VerticalContentAlignment="Center"/>
+                    </ScrollViewer>
+                    <!--公式历史-->
+                    <local:SmoothScrollViewer x:Name="ssvFormulaHistoryViewer" Grid.Row="3">
+                        <local:SmoothScrollViewer.Resources>
+                            <Style TargetType="ScrollBar">
+                                <Setter Property="IsTabStop" Value="False"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ScrollBar">
+                                            <Border Width="5" Background="#FFFFFF" Margin="5,15,5,15">
+                                                <Track IsDirectionReversed="true">
+                                                    <Track.Thumb>
+                                                        <Thumb>
+                                                            <Thumb.Template>
+                                                                <ControlTemplate TargetType="Thumb">
+                                                                    <Grid>
+                                                                        <Border Background="#E0E0E0" CornerRadius="3">
+                                                                            <Thumb Visibility="Hidden"/>
+                                                                        </Border>
+                                                                    </Grid>
+                                                                </ControlTemplate>
+                                                            </Thumb.Template>
+                                                        </Thumb>
+                                                    </Track.Thumb>
+                                                </Track>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </local:SmoothScrollViewer.Resources>
+                        <StackPanel x:Name="spFormulaHistory"/>
+                    </local:SmoothScrollViewer>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+
+
+
+</Window>

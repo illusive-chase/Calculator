@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Calculator.ValueError">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Expression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculator.Number" BaseTypeListCollapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAIAAAAAAAAAAAAAAAAgAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Expression.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Calculator.Variable" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAEAIAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Expression.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Calculator.Function" BaseTypeListCollapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAEAIAAAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Expression.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Calculator.IntegralFunction" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAEAIAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Source\Expression.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Calculator.InternalFunction" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Calculator.InternalFunction.InternalHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Source\Expression.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Calculator.InternalFunction.InternalHandler1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Source\Expression.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Calculator.InternalFunction.InternalHandler2" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Source\Expression.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Calculator.InternalFunction.InternalHandler3" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Source\Expression.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAIABAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Expression.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Calculator.BinaryOp" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAIAAAAAAAAAAAAAAAAgAgBAABAAAIAAAAAAA=</HashCode>
+      <FileName>Source\Expression.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Calculator.MathFunctions">
+    <Position X="7" Y="5.25" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Calculator.MathFunctions.OneVariableFunction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Source\MathFunctions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIEAIAAAAAAAAAAAgYAAEIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\MathFunctions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculator.SyntaxError">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Source\Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculator.Parser">
+    <Position X="1.5" Y="5.25" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Calculator.Parser.EmbedLambda" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Source\Parser.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Enum Name="Calculator.Parser.Token" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Source\Parser.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAQAAAACIASAAAAAAAAAAAAAAAEhCEAAA=</HashCode>
+      <FileName>Source\Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculator.VariableError">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\VariableTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculator.VariableTable">
+    <Position X="3.25" Y="5.25" Width="1.75" />
+    <NestedTypes>
+      <Delegate Name="Calculator.VariableTable.ValueChangedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Source\VariableTable.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Calculator.VariableTable.FormulaChangedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Source\VariableTable.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQIAAAAQAAAIIABACAAABABAAgAABABAAAAAAgAAAAA=</HashCode>
+      <FileName>Source\VariableTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Calculator.IExpression">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAIAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Expression.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Calculator.Operator">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAACAAIAAAAAAAAAAAAFAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Expression.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
